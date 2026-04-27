@@ -1,258 +1,195 @@
-# 🎬 Store Analytics Dashboard
+# Store Analytics Dashboard
 
-<div align="center">
+## Project Overview
 
-![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![Plotly](https://img.shields.io/badge/Plotly-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
-![License](https://img.shields.io/badge/License-MIT-22C55E?style=for-the-badge)
-
-**Interactive analytics dashboard untuk DVD Rental Database — dari KPI bisnis hingga prediksi revenue dengan Machine Learning.**
-
-[📸 Screenshots](#-screenshots) • [🚀 Quick Start](#-quick-start) • [✨ Features](#-features) • [🗂️ Struktur Proyek](#️-struktur-proyek) • [🤖 ML Model](#-ml-model)
-
-</div>
+The **Store Analytics Dashboard** is an operational analytics dashboard designed for business owners and store managers who need clear, data-backed answers without needing to understand SQL or data science. The dashboard connects directly to a **PostgreSQL database** (Sakila schema), runs dynamic queries based on user-selected filters, and presents insights across five analytical dimensions: store performance, inventory efficiency, customer behavior, rental patterns, and revenue forecasting. Built as a **data analytics project**, this not just to visualize data, but to think like a business analyst: understand what questions a business owner actually needs answered, figure out which data tells that story, and build something that communicates insights clearly to a non-technical audience. This dashboard bridges the gap between raw database records and strategic business decisions.
 
 ---
 
-## 📸 Screenshots
+## Dashboard Preview
 
-> Dashboard ini memiliki **Dark Mode** dan **Light Mode** yang bisa di-toggle secara real-time.
-
-| Dark Mode | Light Mode |
-|-----------|------------|
-| *(add screenshot)* | *(add screenshot)* |
+### Tab 1 — Overview
+<img width="1918" height="996" alt="image" src="https://github.com/user-attachments/assets/36590c8f-8305-4933-9dbe-9c3c674cb2b1" />
 
 ---
 
-## ✨ Features
-
-Dashboard ini terdiri dari **5 tab analitik** yang semuanya bisa difilter berdasarkan **Toko** (Store 1 / Store 2 / All) dan **Bulan**:
-
-### 📊 Tab 1 — Overview
-- **6 KPI Cards**: Total Revenue, Active Customers, Total Rentals, Inventory, Film Titles, Avg Transaction
-- **Store Comparison**: Side-by-side revenue & rental performance antar toko
-- **Revenue Trend**: Grafik tren bulanan dengan breakdown per toko
-- **Top Categories**: Bar chart kategori film berdasarkan revenue
-
-### 📦 Tab 2 — Inventory & Categories
-- **Revenue per Inventory Unit**: Efisiensi tiap kategori film
-- **Category Rental Share**: Donut chart distribusi penyewaan
-- **Inventory Utilization**: Tingkat penggunaan stok per kategori
-
-### 👥 Tab 3 — Customers & Geo
-- **World Choropleth Map**: Distribusi revenue berdasarkan negara pelanggan
-- **Top Customers**: Tabel pelanggan paling aktif beserta spending-nya
-- **Customer Segmentation**: Distribusi segmen pelanggan (Heavy / Regular / Casual)
-
-### ⏱️ Tab 4 — Rental Patterns
-- **Hourly Pattern**: Pola penyewaan per jam (kapan pelanggan paling aktif)
-- **Day-of-Week Analysis**: Heatmap penyewaan per hari dalam seminggu
-- **Rental Duration Distribution**: Berapa hari rata-rata film dipinjam
-
-### 🤖 Tab 5 — ML Predictions
-- **3-Month Revenue Forecast**: Prediksi revenue 3 bulan ke depan
-- **Confidence Interval**: Range atas/bawah prediksi
-- **Business Decision Simulator**: What-if scenario — simulasi dampak perubahan bisnis terhadap revenue
+### Tab 2 — Inventory & Categories
+<img width="1919" height="997" alt="image" src="https://github.com/user-attachments/assets/a6bb21f3-20f2-4453-8a76-5bc459835e58" />
 
 ---
 
-## 🗂️ Struktur Proyek
-
-```
-Store_Analytics_Dashboard/
-│
-├── app.py                    # Entry point — orchestrator utama
-├── config.py                 # DB config, tema warna, chart helpers
-├── queries.py                # Semua query SQL ke PostgreSQL
-├── styles.py                 # CSS injection untuk tampilan Streamlit
-├── train_revenue_model.py    # Script training ML model
-│
-├── tabs/
-│   ├── __init__.py
-│   ├── tab_overview.py       # Tab 1: KPI & trends
-│   ├── tab_inventory.py      # Tab 2: Inventory & categories
-│   ├── tab_customers.py      # Tab 3: Customers & geo map
-│   ├── tab_patterns.py       # Tab 4: Rental patterns
-│   └── tab_forecast.py       # Tab 5: ML predictions & simulator
-│
-├── .env.example              # Template environment variables (commit ini)
-├── .env                      # Credentials aktif (JANGAN di-commit!)
-├── .gitignore
-├── requirements.txt
-└── README.md
-```
+### Tab 3 — Customers & Geography
+<img width="1918" height="1000" alt="image" src="https://github.com/user-attachments/assets/6e2fc390-2d7b-498c-a4fe-4d330bb8a5ee" />
 
 ---
 
-## 🚀 Quick Start
+### Tab 4 — Rental Patterns
+<img width="1919" height="1010" alt="image" src="https://github.com/user-attachments/assets/601466bb-76da-4d2b-867f-d6549fdd0281" />
+
+---
+
+### Tab 5 — ML Predictions
+<img width="1919" height="927" alt="image" src="https://github.com/user-attachments/assets/ccddc1d9-d8ba-4e5c-badd-cd0241ca34a2" />
+
+---
+
+## Dataset
+
+- **Source:** [Sakila DVD Rental Database](https://dev.mysql.com/doc/sakila/en/) — a standard sample database widely used for SQL learning and analytics projects
+- **Database:** PostgreSQL
+
+---
+
+## Tech Stack
+
+| Layer | Tools |
+|---|---|
+| **Frontend** | Streamlit |
+| **Visualization** | Plotly Express, Plotly Graph Objects |
+| **Database** | PostgreSQL + psycopg2 |
+| **Machine Learning** | scikit-learn (Linear Regression) |
+| **Data Processing** | Pandas, NumPy |
+| **Styling** | Custom CSS (Inter font, Navy + Pink theme, Dark/Light mode) |
+
+---
+
+## Features
+
+### Tab 1 — Overview
+- **6 KPI Cards:** Total Revenue, Active Customers, Total Rentals, Inventory, Film Titles, Avg Transaction Value
+- **Store Revenue & Rentals Bar Charts** — side-by-side store comparison
+- **Monthly/Daily Revenue Trend** — line chart with Store 1 vs Store 2 breakdown
+- **Customer Distribution Donut Chart** — segmented by rental frequency (Elite, Frequent, Regular, Casual)
+- **Monthly Rentals Trend** — stacked area chart showing volume over time
+- **Top Categories by Revenue** — horizontal bar chart
+
+### Tab 2 — Inventory & Categories
+- **Revenue per Inventory Unit** — all 16 categories ranked by revenue efficiency per copy
+- **Category Rental Share** — pie chart showing rental volume distribution
+- **Top Films by Revenue** — best performing individual titles
+
+### Tab 3 — Customers & Geography
+- **Top 15 Customers Table** — ranked by total revenue with rental count and last rental date
+- **Customer Segmentation** — Elite (40+ rentals), Frequent (30–40), Regular (20–29), Casual (<20)
+- **Geographic Revenue Map** — world map showing revenue by country
+- **Churn Risk Indicator** — customers flagged as at-risk based on inactivity threshold
+
+### Tab 4 — Rental Patterns
+- **Revenue by Day of Week** — bar chart showing which days generate the most revenue
+- **Hourly Heatmap** — rental activity by hour and day of week
+- **Late Return Analysis** — return behavior patterns
+
+### Tab 5 — ML Predictions
+- **3-Month Revenue Forecast** — Linear Regression model trained on historical monthly revenue and transaction volume
+- **Forecast Cards** — projected revenue with likely range (±MAE) for Mar, Apr, May 2006
+- **Business Decision Simulator (What-If Tool)** — simulate the revenue impact of:
+  - Rental price adjustments (±%)
+  - Promotional discounts (%)
+  - New customer acquisition targets
+
+---
+
+## Key Business Insights
+
+### Store Performance
+- Store 1 generated **$30,628** and Store 2 generated **$30,683** — a difference of only **$55** across 10 months
+- Both stores move in sync, peaking together in **July 2005 ($14k+)** and dropping together in **February 2006 (~$250)**
+- Store 2 has **198 more rentals** but nearly identical revenue → Store 2 customers rent more frequently at lower value per visit; Store 1 customers visit less but spend more per transaction
+
+### Inventory Efficiency
+- **Comedy ($14.90/copy)** and **New titles ($14.40/copy)** lead in revenue per inventory unit
+- **Children ($12.30/copy)** and **Family ($12.40/copy)** are the least efficient categories
+- Gap between top and bottom performers: ~**$2.60 per copy** — significant at scale
+
+### Customer Behavior
+- Top customer **Eleanor Hunt** generated **$211.55** from 46 rentals
+- **Marion Snyder** (39 rentals, $194.61) outranks **Clara Shaw** (42 rentals, $189.60), demonstrating that revenue is driven by spending value, not just frequency
+- Most top customers' last rental was **August 2005** — coinciding with peak revenue. Their inactivity directly correlates with the revenue drop
+
+### Revenue Patterns
+- **Tuesday** is the strongest revenue day overall across both stores
+- During peak months (July–August), weekends outperform weekdays
+- **February 2006** shows revenue only on Tuesday, both stores confirming this was not a normal operating month
+
+---
+
+## Getting Started
 
 ### Prerequisites
-- Python 3.11+
-- PostgreSQL 12+
-- DVD Rental Database (lihat [cara install](#️-setup-database))
+- Python 3.10+
+- PostgreSQL with Sakila database loaded
+- pip
 
-### 1. Clone Repository
-
+### 1. Clone the Repository
 ```bash
-git clone https://github.com/username/store-analytics-dashboard.git
-cd store-analytics-dashboard
+git clone https://github.com/fasyanbls/Store-Analytics-Dashboard.git
+cd Store-Analytics-Dashboard
 ```
 
-### 2. Buat Virtual Environment
-
-```bash
-python -m venv venv
-
-# Windows
-venv\Scripts\activate
-
-# macOS / Linux
-source venv/bin/activate
-```
-
-### 3. Install Dependencies
-
+### 2. Install Dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Setup Environment Variables
-
+### 3. Set Up the Database
+Load the Sakila database into PostgreSQL:
 ```bash
-# Salin template
-cp .env.example .env
-
-# Edit .env dan isi dengan credentials database kamu
-nano .env   # atau buka dengan text editor favoritmu
-```
-
-Isi file `.env`:
-```env
-DB_HOST=localhost
-DB_NAME=dvdrental
-DB_USER=postgres
-DB_PASSWORD=your_actual_password
-```
-
-### 5. Setup Database
-
-```bash
-# Download DVD Rental sample database
-# https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/
-
-# Buat database
 psql -U postgres -c "CREATE DATABASE dvdrental;"
-
-# Restore database
-pg_restore -U postgres -d dvdrental dvdrental.tar
+psql -U postgres -d dvdrental -f sakila-schema.sql
+psql -U postgres -d dvdrental -f sakila-data.sql
 ```
 
-### 6. Train ML Model (Opsional)
-
-Model sudah di-train dan harus di-generate sendiri secara lokal (file `.pkl` tidak di-commit ke Git):
-
-```bash
-python train_revenue_model.py
+### 4. Configure Database Connection
+Update the connection settings in `app.py`:
+```python
+conn = psycopg2.connect(
+    host="localhost",
+    database="dvdrental",
+    user="your_username",
+    password="your_password",
+    port=5432
+)
 ```
 
-Output: `revenue_forecast_model.pkl` — dibutuhkan untuk Tab 5 (ML Predictions).
-
-### 7. Jalankan Dashboard
-
+### 5. Run the Dashboard
 ```bash
 streamlit run app.py
 ```
 
-Buka browser di: **http://localhost:8501** 🎉
+The dashboard will open at `http://localhost:8501`
 
 ---
 
-## 🗄️ Setup Database
+## Requirements
 
-DVD Rental adalah sample database PostgreSQL resmi yang merepresentasikan bisnis penyewaan film.
-
-**Statistik database:**
-| Tabel | Jumlah Record |
-|-------|--------------|
-| `film` | 1.000 film |
-| `customer` | 599 pelanggan |
-| `rental` | 16.044 transaksi |
-| `payment` | 14.596 pembayaran |
-| `inventory` | 4.581 item |
-
-**Download:** https://www.postgresqltutorial.com/postgresql-getting-started/postgresql-sample-database/
-
----
-
-## 🤖 ML Model
-
-Tab 5 menggunakan **Gradient Boosting Regressor** yang di-train dengan pendekatan khusus untuk dataset kecil (hanya 5 bulan data).
-
-### Fitur yang digunakan:
-- `month_num`, `month_of_year`, `quarter` — fitur temporal
-- `month_sin`, `month_cos` — cyclical encoding musiman
-- `transactions`, `unique_customers`, `unique_films_rented`
-- `revenue_lag1`, `transactions_lag1` — lag features
-- `revenue_rolling_mean2`, `revenue_rolling_std2` — rolling statistics
-- `revenue_per_customer`, `revenue_per_transaction` — ratio features
-
-### Validasi:
-Menggunakan **Leave-One-Out Cross Validation** (LOO-CV) karena keterbatasan jumlah data.
-
-### Cara re-train:
-```bash
-python train_revenue_model.py
+```
+streamlit
+pandas
+numpy
+plotly
+psycopg2-binary
+scikit-learn
 ```
 
 ---
 
-## ⚙️ Konfigurasi
+## Strategic Recommendations (From Analysis)
 
-Semua konfigurasi dikelola melalui environment variables di file `.env`:
-
-| Variable | Default | Deskripsi |
-|----------|---------|-----------|
-| `DB_HOST` | `localhost` | Host PostgreSQL |
-| `DB_NAME` | `dvdrental` | Nama database |
-| `DB_USER` | `postgres` | Username database |
-| `DB_PASSWORD` | *(wajib diisi)* | Password database |
-| `MODEL_PATH` | `revenue_forecast_model.pkl` | Path file model ML |
+1. **Prioritize Comedy, New, Sports, and Games** for restocking, highest revenue per copy consistently
+2. **Differentiate store strategies**, Store 2 needs frequency-based loyalty programs; Store 1 needs premium value offerings
+3. **Reactivate top customers** who last rented in August 2005, personalized outreach with exclusive offers
+4. **Run Tuesday promotions** for regular months; shift to weekends during peak season (July–August)
+5. **Use the ML Simulator** before making any pricing or discount decision, test the impact first
 
 ---
 
-## 🛠️ Tech Stack
+## Author
 
-| Teknologi | Kegunaan |
-|-----------|----------|
-| **Streamlit** | Web framework untuk dashboard interaktif |
-| **PostgreSQL** | Database relasional (DVD Rental) |
-| **psycopg2** | Driver koneksi Python → PostgreSQL |
-| **Plotly** | Visualisasi interaktif (bar, line, choropleth, dll.) |
-| **Pandas** | Manipulasi dan analisis data |
-| **scikit-learn** | ML model (Gradient Boosting Regressor) |
-| **python-dotenv** | Load environment variables dari `.env` |
-| **SQLAlchemy** | ORM untuk training ML model |
+**Fasya Nabila Salim**
+
+- GitHub: [@fasyanbls](https://github.com/fasyanbls)
+- LinkedIn: [linkedin.com/in/username](https://linkedin.com/in/fasyanbls)
 
 ---
 
-## 📜 License
 
-Proyek ini menggunakan lisensi **MIT** — bebas digunakan, dimodifikasi, dan didistribusikan.
-
----
-
-## 👤 Author
-
-**[Nama Kamu]**
-
-- GitHub: [@username](https://github.com/username)
-- LinkedIn: [linkedin.com/in/username](https://linkedin.com/in/username)
-
----
-
-<div align="center">
-  <sub>Built with ❤️ using Streamlit & PostgreSQL</sub>
-</div>
