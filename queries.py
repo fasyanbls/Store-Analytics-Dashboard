@@ -45,9 +45,13 @@ def _month_clause(mf: str, alias: str = "r") -> str:
 # ─────────────────────────────────────────────
 @st.cache_data(show_spinner=False)
 def get_months() -> list:
-    df = qry("SELECT DISTINCT TO_CHAR(rental_date,'YYYY-MM') AS m FROM rental ORDER BY m")
+    conn = psycopg2.connect(**DB_CONFIG)
+    df = pd.read_sql(
+        "SELECT DISTINCT TO_CHAR(rental_date,'YYYY-MM') AS m FROM rental ORDER BY m",
+        conn
+    )
+    conn.close()
     return ["All"] + df["m"].tolist()
-
 
 # ─────────────────────────────────────────────
 # KPI BLOCK
