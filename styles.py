@@ -136,5 +136,51 @@ div[data-testid="stToggle"] label {{ color: {P["muted"]} !important; font-size: 
     margin-bottom: 10px;
 }}
 .data-note strong {{ color: {P["accent_text"]}; }}
+
+/* ── AI Chat ── */
+div[data-testid="stChatMessage"] {{
+    background: {P["surface"]} !important;
+    border: 1px solid {P["border"]} !important;
+    border-radius: 14px !important;
+    padding: 14px 18px !important;
+    margin-bottom: 8px !important;
+    backdrop-filter: blur(8px);
+}}
+div[data-testid="stChatMessage"] p {{
+    color: {P["text"]} !important;
+    font-size: 0.82rem !important;
+    line-height: 1.75 !important;
+}}
+div[data-testid="stChatMessage"] li {{
+    color: {P["text"]} !important;
+    font-size: 0.8rem !important;
+}}
+div[data-testid="stChatMessage"] strong {{
+    color: {P["pink_hot"]} !important;
+}}
+div[data-testid="stChatMessage"] h1,
+div[data-testid="stChatMessage"] h2,
+div[data-testid="stChatMessage"] h3 {{
+    color: {P["accent_text"]} !important;
+    font-size: 0.88rem !important;
+    margin-top: 8px !important;
+}}
+div[data-testid="stChatMessage"] code {{
+    background: {P["surface_2"]} !important;
+    color: {P["pink_hot"]} !important;
+    padding: 1px 5px !important;
+    border-radius: 4px !important;
+    font-size: 0.76rem !important;
+}}
+div[data-testid="stChatInput"] {{
+    border-color: {P["border"]} !important;
+}}
+div[data-testid="stChatInput"] textarea {{
+    background: {P["surface"]} !important;
+    color: {P["text"]} !important;
+    border-color: {P["border"]} !important;
+    border-radius: 12px !important;
+    font-size: 0.8rem !important;
+}}
 </style>
 """, unsafe_allow_html=True)

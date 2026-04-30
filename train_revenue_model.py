@@ -272,7 +272,7 @@ def train_model(df):
     print(f"Train RMSE: ${metrics['train_rmse']:,.2f}")
     print(f"Train R²:   {metrics['train_r2']:.4f}")
     print(f"LOO-CV MAE: ${metrics['loo_mae']:,.2f} (±{metrics['loo_mae_std']:,.2f})")
-    print(f"\n📋 LOO-CV Fold Results:")
+    print(f"\nLOO-CV Fold Results:")
     for i, score in enumerate(metrics['loo_scores']):
         actual = y[i]
         print(f"  Fold {i+1}: Actual=${actual:,.0f}, MAE=${score:,.2f}")

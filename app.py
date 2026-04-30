@@ -37,7 +37,8 @@ import tabs.tab_overview  as tab_overview
 import tabs.tab_inventory as tab_inventory
 import tabs.tab_customers as tab_customers
 import tabs.tab_patterns  as tab_patterns
-import tabs.tab_forecast  as tab_forecast
+import tabs.tab_forecast     as tab_forecast
+import tabs.tab_ai_insights  as tab_ai_insights
 
 # ─────────────────────────────────────────────
 # THEME 
@@ -108,12 +109,13 @@ geo_df      = load_geo(store_f, month_f)
 # ─────────────────────────────────────────────
 # TABS
 # ─────────────────────────────────────────────
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs([
     "📊 Overview",
     "📦 Inventory & Categories",
     "👥 Customers & Geo",
     "⏱️ Rental Patterns",
     "🤖 ML Predictions",
+    "💬 AI Insights",
 ])
 
 with tab1:
@@ -130,3 +132,6 @@ with tab4:
 
 with tab5:
     tab_forecast.render(P, theme_mode)
+
+with tab6:
+    tab_ai_insights.render(P, theme_mode, kpi, store_df, cust_seg_df, cat_df, trend_df, geo_df, store_f, month_f)
